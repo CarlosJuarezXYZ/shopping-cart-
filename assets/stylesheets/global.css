@@ -1,0 +1,29 @@
+:root {
+    --font-black: #000;
+    --font-dark-grey: #111111;
+    --font-blue: #2f80ed;
+    --font-grey: #767676;
+    --font-white: #ffffff;
+    --background-white: #ffffff;
+    --background-blue: #3685e2;
+    --background-grey: #e5e5e5;
+    --border-blue: 1px solid #3685e2;
+    --border-black: 1px solid #000000;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+  }
+
+  body{
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-image: url("https://fondosmil.com/fondo/14767.jpg");
+  } 
+  .content{
+    padding: 100px;
+  }
