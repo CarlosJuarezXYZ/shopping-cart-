@@ -1,5 +1,5 @@
-//const BASE_URL = "http://localhost:3000";
-const BASE_URL = "https://secret-gorge-31409.herokuapp.com/";
+const BASE_URL = "http://localhost:3000";
+//const BASE_URL = "https://secret-gorge-31409.herokuapp.com/";
 
 async function apiFetch(...args) {
   const response = await fetch(...args);

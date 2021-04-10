@@ -1,0 +1,31 @@
+.container-loading{
+    background-color: rgba(250,240,245,0.9);
+    height: 100%;
+    width: 84%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+
+.loading{
+    border: 15px solid #ccc;
+    border-top-color: /* #f4266a;*/ skyblue;
+    border-top-style: groove;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    position: absolute;
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation: girar 1.5s linear infinite;
+}
+
+@keyframes girar{
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}

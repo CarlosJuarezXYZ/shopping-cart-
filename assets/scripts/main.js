@@ -9,11 +9,11 @@ export default function Main(parentElement){
     render: function(){
       let html = `
     <div class="header">
-      <button type = "click" value = "Snacks" class="navbar">Snacks</button>
+      <button type = "click" value = "Cereals" class="navbar">Cereals</button>
+      <button type = "click" value = "Dairy" class="navbar">Dairy</button>
       <button type = "click" value = "Drinks" class="navbar">Drinks</button>
       <button type = "click" value = "Fruits" class="navbar">Fruits</button>
-      <button type = "click" value = "Dairy" class="navbar">Dairy</button>
-      <button type = "click" value = "Cereals" class="navbar">Cereals</button>
+      <button type = "click" value = "Snacks" class="navbar">Snacks</button>
     </div>
 
     <form class="form">
@@ -35,19 +35,31 @@ export default function Main(parentElement){
                </div>
                </div>`
       }
-      ).join(" ")}
+      ).join(" ")}    
     </div>
 
+   
     <div class="footer">
       <div class="shopping"><i class="ri-shopping-cart-2-line cart "></i></div>
       <div class="content-logout"><p class="logout js-logout">Welcome</p></div>
     </div>
       `;
+      
       this.parent.innerHTML = html;
       this.filterCategories();
       this.cartView();
       this.createProduct();
       this.searchProducts();
+      this.loadingProducts();
+    },
+    loadingProducts: function(){
+      return(
+        `
+        <div class="container-loading">
+        <div class="loading"></div>
+        </div>
+        `
+      )
     },
     filterCategories: function() {
       const content = document.querySelector(".content");
@@ -55,9 +67,26 @@ export default function Main(parentElement){
         const navbar = content.querySelectorAll(".navbar");
         navbar.forEach(async(nav)=>{
           if(nav==e.target){
+            //let body = content.querySelector(".body")
+            //body.innerHTML = this.loadingProducts();
             const products = await listProducts(e.target.value);
             STORE.products = [...products];
+            //body.innerHTML = this.loadingProducts();
             this.render();
+           
+            // window.onload = () =>{
+            //   let loading = document.querySelector(".container-loading");
+            //   loading.style.display = 'none',
+            //   loading.style.opacity = '0';
+            // }
+             // setTimeout(()=>{
+             // let loading = document.querySelector(".container-loading");
+             // loading.style.display = 'none'
+              //loading.style.opacity = '0';
+             // },500)
+            // <div class="container-loading">
+            // <div class="loading"></div>
+            // </div>
           }
         })
       })
