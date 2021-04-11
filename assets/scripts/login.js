@@ -91,11 +91,7 @@ export default function Login(parentElement) {
                 sessionStorage.setItem("name",response.username);
                 main.render();
                 let user = content.querySelector(".container-logout");
-                //user.classList.remove("user");
-                //main.render();
                 user.classList.remove("user");
-                //main.render();
-                //user.classList.remove("user");
             }
         }
        }catch(e){

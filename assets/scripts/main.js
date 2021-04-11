@@ -4,7 +4,6 @@ import {STORE} from "./store.js"
 import { logoutFetch } from "./services/session_services.js";
 import Login from "./login.js";
 export default function Main(parentElement){
-  let username = sessionStorage.getItem("name");
   return{
     parent: document.querySelector(parentElement),
     selectedCategory: null,
@@ -12,7 +11,7 @@ export default function Main(parentElement){
     render: function(){
       let html = `
     <div class="user container-logout">
-      <div class="welcome">Welcome ${username}, you can start shopping now</div>
+      <div class="welcome">Welcome ${sessionStorage.getItem("name")}, you can start shopping now</div>
       <div class="logout">Logout</div>
     </div>
 
@@ -76,30 +75,12 @@ export default function Main(parentElement){
         const navbar = content.querySelectorAll(".navbar");
         navbar.forEach(async(nav)=>{
           if(nav==e.target){
-            //let body = content.querySelector(".body")
-            //body.innerHTML = this.loadingProducts();
             const products = await listProducts(e.target.value);
             STORE.products = [...products];
-            //body.innerHTML = this.loadingProducts();
             this.render();
             let user = content.querySelector(".container-logout");
-            //user.classList.remove("user");
-            //main.render();
             user.classList.remove("user");
            
-            // window.onload = () =>{
-            //   let loading = document.querySelector(".container-loading");
-            //   loading.style.display = 'none',
-            //   loading.style.opacity = '0';
-            // }
-             // setTimeout(()=>{
-             // let loading = document.querySelector(".container-loading");
-             // loading.style.display = 'none'
-              //loading.style.opacity = '0';
-             // },500)
-            // <div class="container-loading">
-            // <div class="loading"></div>
-            // </div>
           }
         })
       })
@@ -116,8 +97,6 @@ export default function Main(parentElement){
         STORE.products = [...product];
         this.render();
         let user = content.querySelector(".container-logout");
-        //user.classList.remove("user");
-        //main.render();
         user.classList.remove("user");
       }
       })
@@ -130,8 +109,6 @@ export default function Main(parentElement){
         let pagCart = Cart(".content");
         pagCart.render();
         let user = content.querySelector(".container-logout");
-        //user.classList.remove("user");
-        //main.render();
         user.classList.remove("user");
       }
     })
@@ -154,15 +131,8 @@ export default function Main(parentElement){
             let cart = Cart(".content");
             cart.render();
             let user = content.querySelector(".container-logout");
-            //user.classList.remove("user");
-            //main.render();
             user.classList.remove("user");
         }
-          // if(token==false){
-          //   alert("hola");
-          //   let login = Login(".content");
-          //   login.render();
-          // }
         })
       
       })
@@ -178,7 +148,7 @@ export default function Main(parentElement){
           sessionStorage.removeItem("items");
           let login = Login(".content");
           login.render();
-          location.reload();
+          window.location.reload();
         }
       })
     }
