@@ -6,10 +6,19 @@ import { STORE } from "./assets/scripts/store.js";
 
 async function init (){
     STORE.products = await listProducts("Cereals")
-    //const main = Main(".content");
-    //main.render();
+    const main = Main(".content");
     const login = Login(".content");
-    login.render();
+    //login.render();
+
+    if (sessionStorage.getItem("token")) {
+        //STORE.products = await listProducts("Cereals")
+        main.render();
+        let content = document.querySelector(".content");
+        let user = content.querySelector(".container-logout");
+        user.classList.remove("user");
+      } else {
+        login.render();
+      }
 }
 
 init();
