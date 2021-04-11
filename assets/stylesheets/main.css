@@ -64,9 +64,9 @@
     border: 1px solid skyblue;
 }
 
-.search:focus{
+/* .search:focus{
     border: 1px solid var(--blue_ligth);
-}
+} */
 
 .btn{
     background-color: blue;
