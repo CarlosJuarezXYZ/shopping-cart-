@@ -1,16 +1,27 @@
 :root {
-    --font-black: #000;
-    --font-dark-grey: #111111;
-    --font-blue: #2f80ed;
-    --font-grey: #767676;
-    --font-white: #ffffff;
-    --background-white: #ffffff;
-    --background-blue: #3685e2;
-    --background-grey: #e5e5e5;
-    --border-blue: 1px solid #3685e2;
-    --border-black: 1px solid #000000;
+  --gray1: #333333;
+  --pink1: #FFA494;
+  --pink2: #FEC5BB;
+  --pink3: #FAE1DD;
+  --pink4: #FFE5D9;
+  --orange: #FFA85F;
+  --orange_ligth: #FEC89A;
+  --black: #455064;
+  --blue: #204186;
+  --blue_ligth: #5E81F4;
+  --sky_blue: #DFEAFF;
+  --gray: #7284A3;
+  --gray_ligth:#CCCCCC;
+  --gray_ligth2: #A39BA8;
+  --gray_ligth3: #F7F7F7;
+  --white: #FFF1DC;
+  --white2:#ffffff;
+  --green_ligth: #B2FEBE;
+  --statusGreen: #B2FEBE;
+  --statusRed: #FEB2B2;
+  --statusPurple:#ABA9FF;
   }
-  
+
   * {
     margin: 0;
     padding: 0;
@@ -19,10 +30,16 @@
   }
 
   body{
-    background-size: 100% 100%;
+    /* background-image:url("/assets/images/bg.svg");
+    background-size: cover;
+    background-position:20px 20px 20px;
+    background-repeat:no-repeat;
+    width: 100%; */
+    background-color: #ffffff;
+    /*background-size: 100% 100%;
     background-repeat:no-repeat;
     background-size: cover;
-    background-image: url("https://fondosmil.com/fondo/14767.jpg");
+    background-image: url("https://fondosmil.com/fondo/14767.jpg");*/
   } 
   .content{
     padding: 100px;

@@ -5,11 +5,10 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border: 1px solid black;
 }
 
 .container-login h3 {
-    color: blue;
+    color: var(--blue_ligth);
     font-size: 30px;
 }
 
@@ -18,13 +17,24 @@
     width: 387px;
     height: auto;
     justify-content: space-between;
-    border: 1px solid black;
     font-size: 24px;
+    color: var(--orange);
+    font-weight: 700;
 }
 
 .login-link p:hover{
-    color: blue;
     cursor: pointer;
+}
+
+.link-login{
+    border-bottom: 4px solid var(--orange);
+    padding: 15px;
+}
+
+.link-signup{
+    color: var(--gray);
+    border-bottom: 4px solid var(--gray);
+    padding:15px;
 }
 
 .title-login{
@@ -33,13 +43,18 @@
     justify-content: center;
     align-items: center;
 }
+
+.title-login p{
+    font-size: 18px;
+    font-family: Roboto;
+    font-weight: 200;
+}
 .login-form{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 387px;
+    width: 422px;
     height: auto;
-    border: 1px solid black;
 }
 
 .container-input{
@@ -49,11 +64,24 @@
     margin-bottom: 10px;
 }
 
+.container-input label{
+    color: rgba(0,0,0,0.5);
+    font-weight: 800;
+    font-size: 16px;
+    margin: 10px 0px;
+}
+
 .container-input input{
-    height: 30px;
+    height: 40px;
     outline: none;
     border-radius: 5px;
-    border: 1px solid blue;
+    border: none;
+    background-color: var(--pink4);
+    outline: 1px solid var(--blue_ligth);
+}
+
+.container-input input:focus{
+    border: 1px solid var(--orange_ligth);
 }
 
 .span-email{
@@ -70,17 +98,19 @@ display: none;
 
 .error{
     color: red;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .button-login{
-    background-color: skyblue;
+    background-color: var(--blue_ligth);
     border: none;
     border-radius: 5px;
     outline: none;
-    height: 30px;
+    height: 40px;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
+    color: #fff;
 }
 
 @media (max-width: 375px) {

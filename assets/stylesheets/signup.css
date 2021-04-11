@@ -5,27 +5,43 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border: 1px solid black;
 }
 
-.container-login h3 {
-    color: blue;
-    font-size: 30px;
+.container-sign h3 {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: Roboto;
+    color: var(--blue_ligth);
+    margin-bottom: 10px;
 }
 
-.login-link{
+.sign-link{
     display: flex;
     width: 387px;
     height: auto;
     justify-content: space-between;
-    border: 1px solid black;
+    font-weight: 700;
     font-size: 24px;
 }
 
-.login-link p:hover{
-    color: blue;
+.sign-link p:hover{
     cursor: pointer;
 }
+
+.sign-login{
+    color: var(--gray);
+    border-bottom: 4px solid var(--gray);
+    padding:15px;
+    
+}
+
+.sign-signup{
+    color: var(--orange);
+    border-bottom: 4px solid var(--orange);
+    padding: 15px;
+}
+
+
 
 .title-sign{
     display: flex;
@@ -37,9 +53,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 387px;
+    width: 410px;
     height: auto;
-    border: 1px solid black;
 }
 
 .container-input{
@@ -50,10 +65,18 @@
 }
 
 .container-input input{
-    height: 30px;
+    height: 40px;
     outline: none;
     border-radius: 5px;
-    border: 1px solid blue;
+    padding-left: 10px;
+    color: rgba(0,0,0,0.5);
+    font-size: 16px;
+    /*border: 1px solid blue;*/
+}
+
+.container-input input::placeholder{
+    font-size: 16px;
+    color: rgba(0,0,0,0.3);
 }
 
 .span-signemail{
@@ -72,23 +95,45 @@ display: none;
     display: none;
 }
 
-.span-fetchSign{
+.span-sign{
     display: none;
 }
 
 .error{
     color: red;
-    font-size: 18px;
+    font-size: 14px;
+}
+
+.container-gender{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.container-gender label{
+    color: rgba(0,0,0,0.5);
+    font-weight: 800;
+}
+
+.container-gender div{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: rgba(0,0,0,0.5);
+    font-weight: 800;
 }
 
 .button-sign{
-    background-color: skyblue;
+    background-color: var(--blue_ligth);
+    margin-top: 15px;
     border: none;
     border-radius: 5px;
     outline: none;
-    height: 30px;
+    height: 40px;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
+    color: #fff;
 }
 
 @media (max-width: 375px) {

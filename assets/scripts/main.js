@@ -1,13 +1,21 @@
 import Cart from "./cart.js";
 import {listProducts} from "./services/products_service.js"
 import {STORE} from "./store.js"
+import { logoutFetch } from "./services/session_services.js";
+import Login from "./login.js";
 export default function Main(parentElement){
+  let username = sessionStorage.getItem("name");
   return{
     parent: document.querySelector(parentElement),
     selectedCategory: null,
-    selectedOption: "Snacks",
+    selectedOption: "Cereals",
     render: function(){
       let html = `
+    <div class="user container-logout">
+      <div class="welcome">Welcome ${username}, you can start shopping now</div>
+      <div class="logout">Logout</div>
+    </div>
+
     <div class="header">
       <button type = "click" value = "Cereals" class="navbar">Cereals</button>
       <button type = "click" value = "Dairy" class="navbar">Dairy</button>
@@ -41,7 +49,7 @@ export default function Main(parentElement){
    
     <div class="footer">
       <div class="shopping"><i class="ri-shopping-cart-2-line cart "></i></div>
-      <div class="content-logout"><p class="logout js-logout">Welcome</p></div>
+      <div class="content-logout"><p class="welcome">Welcome</p></div>
     </div>
       `;
       
@@ -51,6 +59,7 @@ export default function Main(parentElement){
       this.createProduct();
       this.searchProducts();
       this.loadingProducts();
+      this.mainLogout();
     },
     loadingProducts: function(){
       return(
@@ -73,6 +82,10 @@ export default function Main(parentElement){
             STORE.products = [...products];
             //body.innerHTML = this.loadingProducts();
             this.render();
+            let user = content.querySelector(".container-logout");
+            //user.classList.remove("user");
+            //main.render();
+            user.classList.remove("user");
            
             // window.onload = () =>{
             //   let loading = document.querySelector(".container-loading");
@@ -102,6 +115,10 @@ export default function Main(parentElement){
         const product = await listProducts(item);
         STORE.products = [...product];
         this.render();
+        let user = content.querySelector(".container-logout");
+        //user.classList.remove("user");
+        //main.render();
+        user.classList.remove("user");
       }
       })
     },
@@ -112,6 +129,10 @@ export default function Main(parentElement){
       if(cart==e.target){
         let pagCart = Cart(".content");
         pagCart.render();
+        let user = content.querySelector(".container-logout");
+        //user.classList.remove("user");
+        //main.render();
+        user.classList.remove("user");
       }
     })
     },
@@ -119,6 +140,7 @@ export default function Main(parentElement){
       const content = document.querySelector(".content");
       content.addEventListener("click",(e)=>{
         let products = content.querySelectorAll(".img");
+        let token = sessionStorage.getItem("token") || false;
         products.forEach((product)=>{
           if(product==e.target){
            STORE.carts.push({
@@ -131,8 +153,33 @@ export default function Main(parentElement){
             sessionStorage.setItem("items",JSON.stringify(session))
             let cart = Cart(".content");
             cart.render();
-          }
+            let user = content.querySelector(".container-logout");
+            //user.classList.remove("user");
+            //main.render();
+            user.classList.remove("user");
+        }
+          // if(token==false){
+          //   alert("hola");
+          //   let login = Login(".content");
+          //   login.render();
+          // }
         })
+      
+      })
+    },
+    mainLogout: function(){
+      const content = document.querySelector(".content");
+      content.addEventListener("click",async (e)=>{
+        let log = content.querySelector(".logout");
+        if(log==e.target){
+          await logoutFetch();
+          sessionStorage.removeItem("token");
+          sessionStorage.removeItem("name");
+          sessionStorage.removeItem("items");
+          let login = Login(".content");
+          login.render();
+          location.reload();
+        }
       })
     }
 }

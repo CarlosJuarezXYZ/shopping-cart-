@@ -9,7 +9,7 @@ export const loginFetch = (username, password) =>
     body: JSON.stringify({ username, password }),
   });
 
-export const logout = () =>
+export const logoutFetch = () =>
   apiFetch(`${BASE_URL}/logout`, {
     method: "DELETE",
     headers: {

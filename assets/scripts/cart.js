@@ -1,11 +1,18 @@
+import Login from "./login.js";
 import Main from "./main.js";
 import { STORE } from "./store.js";
 import Succes from "./succes.js";
 export default function Cart(parentElement) {
+  let username = sessionStorage.getItem("name");
   return {
     parent: document.querySelector(parentElement),
     render: function () {
       let html = `
+      <div class="user container-logout">
+        <div class="welcome">${username}, here you can confirm your products</div>
+        <div class="logout">Logout</div>
+      </div>
+
        <div class="cart-page">
         ${STORE.carts
           .map((cart, index) => {
@@ -33,6 +40,7 @@ export default function Cart(parentElement) {
       this.cancelProducts();
       this.succesView();
       this.viewHome();
+      this.cartLogout();
     },
     sumProducts: function () {
       let acum = 0;
@@ -66,6 +74,11 @@ export default function Cart(parentElement) {
           STORE.carts = [];
           const main = Main(".content");
           main.render();
+          let user = content.querySelector(".container-logout");
+          //user.classList.remove("user");
+          //main.render();
+          user.classList.remove("user");
+          
         }
       });
     },
@@ -88,8 +101,27 @@ export default function Cart(parentElement) {
         if (home == e.target) {
           let main = Main(".content");
           main.render();
+          let user = content.querySelector(".container-logout");
+          //user.classList.remove("user");
+          //main.render();
+          user.classList.remove("user");
         }
       });
     },
+    cartLogout: function(){
+      const content = document.querySelector(".content");
+      content.addEventListener("click", (e)=>{
+        let log = content.querySelector(".logout");
+        if(log==e.target){
+          //await logout();
+          sessionStorage.removeItem("token");
+          sessionStorage.removeItem("name");
+          sessionStorage.removeItem("items");
+          let login = Login(".content");
+          login.render();
+          location.reload();
+        }
+      })
+    }
   };
 }

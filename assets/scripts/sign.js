@@ -7,18 +7,20 @@ export default function Sign(parentElement) {
     render: function () {
       let html = `
       <div class="container-sign">
-          <div class="login-link">
-            <div class="link-login">
+          <div class="sign-link">
+            <div class="sign-login">
                 <p>Login</p>
             </div>
-            <div class="link-signup">
+            <div class="sign-signup">
                 <p>Signup</p>
             </div>
           </div>
 
+          <span class="span-sign error">Unauthorized email or password</span>
+
           <div class="title-sign">
           <h3>Signup</h3>
-          <p>Welcome,Register to enjoy the online store</p>
+          <p>Welcome, Register to enjoy the online store</p>
           </div>
 
           <form class="sign-form">
@@ -31,7 +33,7 @@ export default function Sign(parentElement) {
             <div class="container-input">
                 <label>Password:</label>
                 <input class="password-sign" type = "password" placeholder="Password"/>
-                <span class="span-signpassword error">the password must be greater than 6 digits and cannot have spaces</span>
+                <span class="span-signpassword error">the password must be greater than 6 digits and can't have spaces</span>
             </div>
 
             <div class="container-input">
@@ -40,12 +42,18 @@ export default function Sign(parentElement) {
                 <span class="span-birthday error">the field cannot be empty</span>
             </div>
 
-            <div class="container-input">
+            <div class="container-gender">
+                <div>
                 <label>Gender:</label>
-                <input type = "radio" class="gender" name ="gender" value="male"/> male
-                <input type = "radio" class="gender" name = "gender" value="female"/> female
-                <span class="span-gender error">the field cannot be empty and / or formatted incorrectly</span>
+                <input type = "radio" class="gender" name ="gender" value="male"/> Male
+                </div>
+
+                <div>
+                <input type = "radio" class="gender" name = "gender" value="female"/> Female
+                </div>
             </div>
+
+            <span class="span-gender error">the field cannot be empty</span>
 
             <button class="button-sign" type = "submit">Signup</button>
           </form>
@@ -58,7 +66,7 @@ export default function Sign(parentElement) {
     loginView: function () {
       const content = document.querySelector(".content");
       content.addEventListener("click", (e) => {
-        let viewLogin = content.querySelector(".link-login p");
+        let viewLogin = content.querySelector(".sign-login p");
         if (viewLogin == e.target) {
           let login = Login(".content");
           login.render();
@@ -116,13 +124,23 @@ export default function Sign(parentElement) {
         console.log(gender);
         try{
             if(this.validSign(username.value,password.value,birthday.value,gender) === true){
-                const sing = await createUser(username.value,password.value,newBirthday,gender.value);
-                sessionStorage.setItem("token",sing.token);
+                const response = await createUser(username.value,password.value,newBirthday,gender.value);
+                console.log(response);
+                if(!response.ok){
+                sessionStorage.setItem("token",response.token);
+                sessionStorage.setItem("name",response.username);
                 let main = Main(".content");
                 main.render();
+                let user = content.querySelector(".container-logout");
+                //user.classList.remove("user");
+                //main.render();
+                user.classList.remove("user");
+                }
             }
         }catch(e){
-            alert("prueba");
+            const content = document.querySelector(".content");
+            let sign_error = content.querySelector(".span-sign");
+            sign_error.classList.remove("span-sign");
         }
         // const sing = await createUser(username.value,password.value,newBirthday,gender.value);
         // sessionStorage.setItem("token",sing.token);

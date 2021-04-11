@@ -1,3 +1,24 @@
+.container-logout{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: rgba(0,0,0,0.5);
+    font-weight: 700;
+}
+
+.user{
+    display: none;
+}
+
+.logout{
+    cursor: pointer;
+    color: var(--orange);
+
+}
 .header{
     width: 100%;
     height: auto;
@@ -12,7 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: skyblue;
+    background-color: var(--blue_ligth);
     color:#fff;
     padding: 10px;
     cursor: pointer;
@@ -25,7 +46,7 @@
 }
 
 .navbar:hover{
-    color: steelblue;
+    background-color: var(--orange);
 }
 
 .form{
@@ -40,7 +61,11 @@
     border-radius: 5px;
     outline: none;
     margin: 10px 0px;
-    border:1px solid skyblue;
+    border: 1px solid skyblue;
+}
+
+.search:focus{
+    border: 1px solid var(--blue_ligth);
 }
 
 .btn{
@@ -57,7 +82,7 @@
 }
 
 .btn:hover{
-    background-color: skyblue;
+    background-color: var(--orange);
 }
 
 .body{
@@ -81,8 +106,12 @@
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    border: 2px solid var(--blue_ligth);
 }
 
+.products:hover{
+    border: 2px solid skyblue;
+}
 .products p {
     display: flex;
     align-items: center;
@@ -109,7 +138,7 @@
     width: 100%;
     height: auto;
     display: flex;
-    background-color: skyblue;
+    background-color: var(--blue_ligth);
     margin-top: 10px;
     border-radius: 10px;
 }
@@ -125,7 +154,7 @@
 }
 
 .shopping i:hover {
-    color: black;
+    color: skyblue;
     cursor: pointer;
 }
 
@@ -140,11 +169,16 @@
 }
 
 .content-logout p:hover{
-    color: black;
+    color: skyblue;
     cursor:pointer;
 }
 
 @media (max-width:600px){
+
+  .container-logout .welcome{
+    font-size: 12px;
+  }
+
   .body{
     width: 100%;
     display: grid;
@@ -158,4 +192,24 @@
       width: 100%;
       padding: 10px;
   }
+  .navbar{
+      padding:5px;
+      font-size: 14px;
+  }
+  .form{
+      width: 50%;
+  }
+  .container-logout{
+      font-size: 14px;
+  }
+ .products p{
+     font-size: 10px;
+ }
+ .shopping{
+     padding: 10px;
+     font-size: 30px;
+ }
+ .content-logout{
+     font-size: 16px;
+ }
 }

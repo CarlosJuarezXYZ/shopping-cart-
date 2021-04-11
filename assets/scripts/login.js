@@ -20,7 +20,7 @@ export default function Login(parentElement) {
 
       <div class="title-login">
       <h3>Login</h3>
-      <p>Welcome,Enter your email and password </p>
+      <p>Welcome, Enter your email and password </p>
       </div>
 
       <form class="login-form">
@@ -33,7 +33,7 @@ export default function Login(parentElement) {
         <div class="container-input">
             <label>Password:</label>
             <input class = "password" type = "password" placeholder="Password"/>
-            <span class="span-password error">the password must be greater than 6 digits and cannot have spaces</span>
+            <span class="span-password error">the password must be greater than 6 digits and can't have spaces</span>
         </div>
         <button class="button-login" type = "submit">Login</button>
       </form>
@@ -88,7 +88,14 @@ export default function Login(parentElement) {
                 let main = Main(".content");
                 let token = response.token;
                 sessionStorage.setItem("token",token);
+                sessionStorage.setItem("name",response.username);
                 main.render();
+                let user = content.querySelector(".container-logout");
+                //user.classList.remove("user");
+                //main.render();
+                user.classList.remove("user");
+                //main.render();
+                //user.classList.remove("user");
             }
         }
        }catch(e){
