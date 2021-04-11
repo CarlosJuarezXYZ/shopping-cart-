@@ -16,7 +16,7 @@ export default function Sign(parentElement) {
             </div>
           </div>
 
-          <span class="span-sign error">Unauthorized email or password</span>
+          <span class="span-sign error">the email is getting used</span>
 
           <div class="title-sign">
           <h3>Signup</h3>
@@ -132,8 +132,6 @@ export default function Sign(parentElement) {
                 let main = Main(".content");
                 main.render();
                 let user = content.querySelector(".container-logout");
-                //user.classList.remove("user");
-                //main.render();
                 user.classList.remove("user");
                 }
             }

@@ -33,8 +33,6 @@ export default function Succes(parentElement) {
           const main = Main(".content");
           main.render();
           let user = content.querySelector(".container-logout");
-          //user.classList.remove("user");
-          //main.render();
           user.classList.remove("user");
         }
       });
