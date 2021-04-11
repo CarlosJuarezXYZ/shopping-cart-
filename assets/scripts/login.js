@@ -1,5 +1,6 @@
 import Main from "./main.js";
 import { loginFetch } from "./services/session_services.js";
+import Sign from "./sign.js";
 export default function Login(parentElement) {
   return {
     parent: document.querySelector(parentElement),
@@ -45,9 +46,10 @@ export default function Login(parentElement) {
     signView: function () {
       const content = document.querySelector(".content");
       content.addEventListener("click", (e) => {
-        let sign = content.querySelector(".link-signup p");
-        if (sign == e.target) {
-          alert("hola");
+        let viewSign = content.querySelector(".link-signup p");
+        if (viewSign == e.target) {
+          let sign = Sign(".content");
+          sign.render();
         }
       });
     },

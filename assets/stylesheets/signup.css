@@ -1,0 +1,114 @@
+.container-sign{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid black;
+}
+
+.container-login h3 {
+    color: blue;
+    font-size: 30px;
+}
+
+.login-link{
+    display: flex;
+    width: 387px;
+    height: auto;
+    justify-content: space-between;
+    border: 1px solid black;
+    font-size: 24px;
+}
+
+.login-link p:hover{
+    color: blue;
+    cursor: pointer;
+}
+
+.title-sign{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 387px;
+    height: auto;
+    border: 1px solid black;
+}
+
+.container-input{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.container-input input{
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid blue;
+}
+
+.span-signemail{
+ display: none;
+}
+
+.span-signpassword{
+display: none;
+}
+
+.span-birthday{
+    display: none;
+}
+
+.span-gender{
+    display: none;
+}
+
+.span-fetchSign{
+    display: none;
+}
+
+.error{
+    color: red;
+    font-size: 18px;
+}
+
+.button-sign{
+    background-color: skyblue;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+@media (max-width: 375px) {
+    .container-sign {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .container-sign h3 {
+      text-align: center;
+    }
+    .sign-form{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+  }
