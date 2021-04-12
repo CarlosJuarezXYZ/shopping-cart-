@@ -83,7 +83,6 @@ export default function Login(parentElement) {
         try {
           if (this.validLogin(username.value, password.value) === true) {
             let response = await loginFetch(username.value, password.value);
-            console.log(response.token);
             if (!response.ok) {
               let main = Main(".content");
               let token = response.token;
