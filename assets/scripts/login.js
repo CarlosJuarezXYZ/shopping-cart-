@@ -53,54 +53,53 @@ export default function Login(parentElement) {
         }
       });
     },
-    validLogin: function(email,password) {
-        function validEmail(email) {
-          if (/\S+@gmail\.com/i.test(email)){
-            return true;
-          } else {
-             const content = document.querySelector(".content");
-             let email_error = content.querySelector(".span-email");
-             email_error.classList.remove("span-email");
-          }
+    validLogin: function (email, password) {
+      function validEmail(email) {
+        if (/\S+@gmail\.com/i.test(email)) {
+          return true;
+        } else {
+          const content = document.querySelector(".content");
+          let email_error = content.querySelector(".span-email");
+          email_error.classList.remove("span-email");
         }
-        function validPassword(password) {
-          if(password.length >= 6 &&  password.split(' ').length === 1) {
-            return true;
-          }else{
-            const content = document.querySelector(".content");
-            let email_error = content.querySelector(".span-password");
-            email_error.classList.remove("span-password");
-          }
+      }
+      function validPassword(password) {
+        if (password.length >= 6 && password.split(" ").length === 1) {
+          return true;
+        } else {
+          const content = document.querySelector(".content");
+          let email_error = content.querySelector(".span-password");
+          email_error.classList.remove("span-password");
         }
-        return validEmail(email), validPassword(password);
-      },
-    formSubmit: function(e){
-        const content = document.querySelector(".content");
-        content.addEventListener("submit", async (e)=>{
+      }
+      return validEmail(email), validPassword(password);
+    },
+    formSubmit: function (e) {
+      const content = document.querySelector(".content");
+      content.addEventListener("submit", async (e) => {
         e.preventDefault();
         let username = content.querySelector(".email");
         let password = content.querySelector(".password");
-        try{
-        if(this.validLogin(username.value,password.value)===true){
-            let response = await loginFetch(username.value,password.value);
+        try {
+          if (this.validLogin(username.value, password.value) === true) {
+            let response = await loginFetch(username.value, password.value);
             console.log(response.token);
-            if(!response.ok){
-                let main = Main(".content");
-                let token = response.token;
-                sessionStorage.setItem("token",token);
-                sessionStorage.setItem("name",response.username);
-                main.render();
-                let user = content.querySelector(".container-logout");
-                user.classList.remove("user");
+            if (!response.ok) {
+              let main = Main(".content");
+              let token = response.token;
+              sessionStorage.setItem("token", token);
+              sessionStorage.setItem("name", response.username);
+              main.render();
+              let user = content.querySelector(".container-logout");
+              user.classList.remove("user");
             }
+          }
+        } catch (e) {
+          const content = document.querySelector(".content");
+          let email_error = content.querySelector(".span-fetch");
+          email_error.classList.remove("span-fetch");
         }
-       }catch(e){
-        const content = document.querySelector(".content");
-            let email_error = content.querySelector(".span-fetch");
-            email_error.classList.remove("span-fetch");
-       }
-        })
-    } 
-    
+      });
+    },
   };
 }

@@ -1,6 +1,6 @@
 import Main from "./main.js";
 import { STORE } from "./store.js";
-import { logoutFetch} from "./services/session_services.js";
+import { logoutFetch } from "./services/session_services.js";
 import Login from "./login.js";
 
 export default function Succes(parentElement) {
@@ -37,11 +37,11 @@ export default function Succes(parentElement) {
         }
       });
     },
-    succesLogout: function(){
+    succesLogout: function () {
       const content = document.querySelector(".content");
-      content.addEventListener("click",async (e)=>{
+      content.addEventListener("click", async (e) => {
         let log = content.querySelector(".succes-logout");
-        if(log==e.target){
+        if (log == e.target) {
           await logoutFetch();
           sessionStorage.removeItem("token");
           sessionStorage.removeItem("name");
@@ -50,7 +50,7 @@ export default function Succes(parentElement) {
           login.render();
           location.reload();
         }
-      })
-    }
+      });
+    },
   };
 }

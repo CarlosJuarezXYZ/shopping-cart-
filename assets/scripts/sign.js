@@ -73,95 +73,91 @@ export default function Sign(parentElement) {
         }
       });
     },
-    validSign: function(email,password,birthday,gender) {
-        function validEmail(email) {
-          if (/\S+@gmail\.com/i.test(email)){
-            return true;
-          } else {
-             const content = document.querySelector(".content");
-             let email_error = content.querySelector(".span-signemail");
-             email_error.classList.remove("span-signemail");
-          }
+    validSign: function (email, password, birthday, gender) {
+      function validEmail(email) {
+        if (/\S+@gmail\.com/i.test(email)) {
+          return true;
+        } else {
+          const content = document.querySelector(".content");
+          let email_error = content.querySelector(".span-signemail");
+          email_error.classList.remove("span-signemail");
         }
-        function validPassword(password) {
-          if(password.length >= 6 &&  password.split(' ').length === 1) {
-            return true;
-          }else{
-            const content = document.querySelector(".content");
-            let email_error = content.querySelector(".span-signpassword");
-            email_error.classList.remove("span-signpassword");
-          }
+      }
+      function validPassword(password) {
+        if (password.length >= 6 && password.split(" ").length === 1) {
+          return true;
+        } else {
+          const content = document.querySelector(".content");
+          let email_error = content.querySelector(".span-signpassword");
+          email_error.classList.remove("span-signpassword");
         }
-        function validBirthdate(birthday){
-            if(birthday.length != ""){
-                return true
-            }else{
-                const content = document.querySelector(".content");
-                let birthday_error = content.querySelector(".span-birthday");
-                birthday_error.classList.remove("span-birthday");
-            }
+      }
+      function validBirthdate(birthday) {
+        if (birthday.length != "") {
+          return true;
+        } else {
+          const content = document.querySelector(".content");
+          let birthday_error = content.querySelector(".span-birthday");
+          birthday_error.classList.remove("span-birthday");
         }
-        function validGender(gender){
-        if(gender != null){
-        return true;
-        }else{
-        const content = document.querySelector(".content");
-        let gender_error = content.querySelector(".span-gender");
-        gender_error.classList.remove("span-gender");
+      }
+      function validGender(gender) {
+        if (gender != null) {
+          return true;
+        } else {
+          const content = document.querySelector(".content");
+          let gender_error = content.querySelector(".span-gender");
+          gender_error.classList.remove("span-gender");
         }
-        }
-        return validEmail(email), validPassword(password), validBirthdate(birthday),validGender(gender);
-      },
-    formSign: function(e){
-        const content = document.querySelector(".content");
-        content.addEventListener("submit", async (e)=>{
+      }
+      return (
+        validEmail(email),
+        validPassword(password),
+        validBirthdate(birthday),
+        validGender(gender)
+      );
+    },
+    formSign: function (e) {
+      const content = document.querySelector(".content");
+      content.addEventListener("submit", async (e) => {
         e.preventDefault();
         let username = content.querySelector(".email-sign");
         let password = content.querySelector(".password-sign");
         let birthday = content.querySelector(".birthday");
         let newBirthday = birthday.value.toString();
-        let gender = content.querySelector(('input[name="gender"]:checked'));
+        let gender = content.querySelector('input[name="gender"]:checked');
         console.log(gender);
-        try{
-            if(this.validSign(username.value,password.value,birthday.value,gender) === true){
-                const response = await createUser(username.value,password.value,newBirthday,gender.value);
-                console.log(response);
-                if(!response.ok){
-                sessionStorage.setItem("token",response.token);
-                sessionStorage.setItem("name",response.username);
-                let main = Main(".content");
-                main.render();
-                let user = content.querySelector(".container-logout");
-                user.classList.remove("user");
-                }
+        try {
+          if (
+            this.validSign(
+              username.value,
+              password.value,
+              birthday.value,
+              gender
+            ) === true
+          ) {
+            const response = await createUser(
+              username.value,
+              password.value,
+              newBirthday,
+              gender.value
+            );
+            console.log(response);
+            if (!response.ok) {
+              sessionStorage.setItem("token", response.token);
+              sessionStorage.setItem("name", response.username);
+              let main = Main(".content");
+              main.render();
+              let user = content.querySelector(".container-logout");
+              user.classList.remove("user");
             }
-        }catch(e){
-            const content = document.querySelector(".content");
-            let sign_error = content.querySelector(".span-sign");
-            sign_error.classList.remove("span-sign");
+          }
+        } catch (e) {
+          const content = document.querySelector(".content");
+          let sign_error = content.querySelector(".span-sign");
+          sign_error.classList.remove("span-sign");
         }
-        // const sing = await createUser(username.value,password.value,newBirthday,gender.value);
-        // sessionStorage.setItem("token",sing.token);
-        // let main = Main(".content");
-        // main.render();
-    //     try{
-    //     if(this.validLogin(username.value,password.value)===true){
-    //         let response = await loginFetch(username.value,password.value);
-    //         console.log(response.token);
-    //         if(!response.ok){
-    //             let main = Main(".content");
-    //             let token = response.token;
-    //             sessionStorage.setItem("token",token);
-    //             main.render();
-    //         }
-    //     }
-    //    }catch(e){
-    //     const content = document.querySelector(".content");
-    //         let email_error = content.querySelector(".span-fetch");
-    //         email_error.classList.remove("span-fetch");
-    //    }
-        })
-    } 
-    
+      });
+    },
   };
 }

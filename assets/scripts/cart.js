@@ -75,10 +75,7 @@ export default function Cart(parentElement) {
           const main = Main(".content");
           main.render();
           let user = content.querySelector(".container-logout");
-          //user.classList.remove("user");
-          //main.render();
           user.classList.remove("user");
-          
         }
       });
     },
@@ -102,18 +99,15 @@ export default function Cart(parentElement) {
           let main = Main(".content");
           main.render();
           let user = content.querySelector(".container-logout");
-          //user.classList.remove("user");
-          //main.render();
           user.classList.remove("user");
         }
       });
     },
-    cartLogout: function(){
+    cartLogout: function () {
       const content = document.querySelector(".content");
-      content.addEventListener("click", (e)=>{
+      content.addEventListener("click", (e) => {
         let log = content.querySelector(".logout");
-        if(log==e.target){
-          //await logout();
+        if (log == e.target) {
           sessionStorage.removeItem("token");
           sessionStorage.removeItem("name");
           sessionStorage.removeItem("items");
@@ -121,7 +115,7 @@ export default function Cart(parentElement) {
           login.render();
           location.reload();
         }
-      })
-    }
+      });
+    },
   };
 }

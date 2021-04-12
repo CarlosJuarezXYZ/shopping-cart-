@@ -1,4 +1,4 @@
-import {BASE_URL,apiFetch} from './api_fetch.js'
+import { BASE_URL, apiFetch } from "./api_fetch.js";
 
 export const loginFetch = (username, password) =>
   apiFetch(`${BASE_URL}/login`, {
